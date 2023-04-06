@@ -32,11 +32,11 @@ export class OauthCordova extends Oauth {
         const browserRef = window.cordova.InAppBrowser.open(url, '_blank', params);
         const exitListener = () => reject(new Error(`The "${options.providerName}" sign in flow was canceled`));
 
-        browserRef.addEventListener('loaderror', () => {
-          browserRef.removeEventListener('exit', exitListener);
-          browserRef.close();
-          reject(new Error(`Error loading login page of "${options.providerName}"`));
-        });
+        // browserRef.addEventListener('loaderror', () => {
+        //   browserRef.removeEventListener('exit', exitListener);
+        //   browserRef.close();
+        //   reject(new Error(`Error loading login page of "${options.providerName}"`));
+        // });
 
         browserRef.addEventListener('loadstart', (event) => {
             if (event.url.indexOf(options.resolveOnUri) === 0) {
